@@ -77,19 +77,87 @@
             text-align: center;
         }
 
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
         .logo-img {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 1.5rem;
+            height: 48px;
+            width: auto;
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="glass-container">
-        <a href="index.html" class="logo">
-            <img src="logo.png" alt="Woys AI Logo" class="logo-img">
-        </a>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Woys AI Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="science.html">Science</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="glass-container" style="margin-top: 100px;">
         <h1>Privacy Policy</h1>
         <p class="last-updated">Last Updated: March 4, 2026</p>
 
