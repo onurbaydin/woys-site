@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,9 +39,17 @@
             text-align: center;
         }
 
-        h1 { color: var(--accent-color); font-size: 2.2rem; margin-bottom: 1.5rem; }
-        p { font-size: 1.1rem; margin-bottom: 1.5rem; }
-        
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
         .email-link {
             display: inline-block;
             color: var(--accent-color);
@@ -65,21 +74,105 @@
             border: 1px solid var(--glass-border);
         }
 
-        strong { color: #fff; }
+        strong {
+            color: #fff;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="glass-container">
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Woys AI Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="science.html">Science</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="glass-container" style="margin-top: 100px;">
         <h1>Customer Support</h1>
         <p>We are here to help you with any questions or issues regarding <strong>Woys AI</strong>.</p>
-        
+
         <a href="mailto:support@woys.ai" class="email-link">support@woys.ai</a>
 
         <div class="instruction-box">
-            <p>For any support or assistance, please send an email to the address above. To help us serve you better, please include your <strong>Full Name</strong> and use the <strong>Email Address registered in the app</strong>.</p>
+            <p>For any support or assistance, please send an email to the address above. To help us serve you better,
+                please include your <strong>Full Name</strong> and use the <strong>Email Address registered in the
+                    app</strong>.</p>
         </div>
-        
-        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">Woys AI is operated by Buyxall LLC, Wyoming, USA.</p>
+
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">Woys AI is operated by Buyxall LLC, Wyoming, USA.
+        </p>
     </div>
 </body>
+
 </html>
