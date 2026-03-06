@@ -32,20 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinksContainer) {
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+    }
+
     // GSAP Horizontal Scroll for Features Section
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         const scrollContainer = document.querySelector(".horizontal-scroll-container");
-        if (scrollContainer) {
+        const scrollSection = document.querySelector(".horizontal-scroll-section");
+
+        if (scrollContainer && scrollSection) {
+            function getScrollAmount() {
+                let scrollWidth = scrollContainer.scrollWidth;
+                return -(scrollWidth - window.innerWidth);
+            }
+
             gsap.to(scrollContainer, {
-                x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+                x: getScrollAmount,
                 ease: "none",
                 scrollTrigger: {
-                    trigger: ".horizontal-scroll-section",
+                    trigger: scrollSection,
                     pin: true,
                     scrub: 1,
-                    end: () => "+=" + scrollContainer.scrollWidth
+                    invalidateOnRefresh: true,
+                    end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`
                 }
             });
         }
