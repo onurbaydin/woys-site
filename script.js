@@ -43,30 +43,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // GSAP Horizontal Scroll for Features Section
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+    function initGSAP() {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
 
-        const scrollContainer = document.querySelector(".horizontal-scroll-container");
-        const scrollSection = document.querySelector(".horizontal-scroll-section");
+            const scrollContainer = document.querySelector(".horizontal-scroll-container");
+            const scrollSection = document.querySelector(".horizontal-scroll-section");
 
-        if (scrollContainer && scrollSection) {
-            function getScrollAmount() {
-                let scrollWidth = scrollContainer.scrollWidth;
-                return -(scrollWidth - window.innerWidth);
-            }
-
-            gsap.to(scrollContainer, {
-                x: getScrollAmount,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: scrollSection,
-                    pin: true,
-                    scrub: 1,
-                    invalidateOnRefresh: true,
-                    end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`
+            if (scrollContainer && scrollSection) {
+                function getScrollAmount() {
+                    let scrollWidth = scrollContainer.scrollWidth;
+                    return -(scrollWidth - window.innerWidth);
                 }
-            });
+
+                gsap.to(scrollContainer, {
+                    x: getScrollAmount,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: scrollSection,
+                        pin: true,
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                        end: () => `+=${scrollContainer.scrollWidth - window.innerWidth}`
+                    }
+                });
+            }
         }
     }
-});
 
+    if (document.readyState === 'complete') {
+        initGSAP();
+    } else {
+        window.addEventListener('load', initGSAP);
+    }
+});
