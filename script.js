@@ -24,11 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active Link Highlighter in Header Navigation
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPath) {
             link.classList.add('active');
         }
     });
+
+    // GSAP Horizontal Scroll for Features Section
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const scrollContainer = document.querySelector(".horizontal-scroll-container");
+        if (scrollContainer) {
+            gsap.to(scrollContainer, {
+                x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".horizontal-scroll-section",
+                    pin: true,
+                    scrub: 1,
+                    end: () => "+=" + scrollContainer.scrollWidth
+                }
+            });
+        }
+    }
 });

@@ -86,6 +86,7 @@ h1 {
     line-height: 1.2;
     background: linear-gradient(to right, #ffffff, var(--accent-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -1px;
 }
@@ -307,4 +308,168 @@ ul.glass-list li:last-child {
     .footer-links a {
         margin: 0;
     }
+}
+
+/* Animations added for redesign */
+
+/* Heartbeat Logo */
+.hero-logo-container {
+    margin-bottom: 2rem;
+}
+
+.hero-logo {
+    height: 80px;
+    width: auto;
+}
+
+.heartbeat-animation {
+    animation: heartbeat 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.15);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.15);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}
+
+/* Hero text wrapper */
+.hero-text-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    z-index: 1;
+}
+
+/* Sound wave animation from center left to right */
+.soundwave-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 40px;
+    transform: translateY(-50%);
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 30" width="100" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M0,15 Q10,0 20,15 T40,15 T60,15 T80,15 T100,15" fill="none" stroke="%2338bdf8" stroke-width="2"/></svg>') repeat-x left center;
+    background-size: auto 100%;
+    animation: soundwaveMove 3s ease-in-out infinite;
+    opacity: 0;
+    z-index: -1;
+}
+
+@keyframes soundwaveMove {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    70% {
+        width: 100%;
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scroll-icon {
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    position: relative;
+}
+
+.scroll-icon::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    animation: scrollMouse 2s infinite ease-in-out;
+}
+
+@keyframes scrollMouse {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 15px);
+        opacity: 0;
+    }
+}
+
+/* Horizontal Scroll Layout */
+.horizontal-scroll-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0 50vw;
+    /* Padding ensures items start and end in viewport center */
+    gap: 3rem;
+    width: max-content;
+    will-change: transform;
+}
+
+.feature-card {
+    flex: 0 0 320px;
+    /* Fixed width for cards */
+    white-space: normal;
+}
+
+.scroll-separator {
+    flex: 0 0 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
 }
